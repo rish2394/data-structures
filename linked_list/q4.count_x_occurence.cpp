@@ -35,7 +35,7 @@ void createList(list &head, int data) {
 		temp2 = temp2->next;
   }
 	temp2->next = temp;
-} 
+}
 
 /* function to get frequency of a particular number */
 int getFreq(list head, int x) {
@@ -51,17 +51,17 @@ int getFreq(list head, int x) {
   }
 	return count;
 }
-/* Recursively - Bad Method */
-int getFreqRecursively(list head, int x, int &count) {
+
+/* function to get frequency of a particular number recursively */
+int getFreqRecursively(list head, int x) {
 	if(!head) {
 		return 0;
-  }	
-  getFreqRecursively(head->next, x, count);
-  if(head -> data == x) {
-		count++;	
   }
-  return count;
+
+  int value = (head->data == x) ? 1 : 0;
+  return value + getFreqRecursively(head->next, x);
 }
+
 int main() {
 	list head = NULL;
 	int data;
@@ -83,7 +83,7 @@ int main() {
 	cout << x << " occurs " << getFreq(head, x) << " times in the list";
   cout << endl;
   int count = 0;
-	cout << x << " occurs " << getFreqRecursively(head, x, count) << " times in the list";
+	cout << x << " occurs " << getFreqRecursively(head, x) << " times in the list";
   cout << endl;
 	return 0;
 }
