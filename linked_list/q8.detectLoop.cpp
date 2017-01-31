@@ -5,19 +5,19 @@ using std::endl;
 #include<string.h>
 
 typedef struct node {
-	int data;
-	struct node *next;
+  int data;
+  struct node *next;
 }node;
 
 typedef node *list;
 
 void display(list head) {
-	if(!head) {
-		return;
+  if(!head) {
+     return;
   }
-	while(head) {
-		cout << head->data << ' ';
-		head = head->next;
+  while(head) {
+    cout << head->data << ' ';
+    head = head->next;
   }
 }
 
