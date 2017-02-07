@@ -156,9 +156,11 @@ int main() {
 
 	/* Method 2 Starting level from 1*/
 	int answer = 0;
-  getLevel2(root, key, 1, answer);
-	cout << answer << endl;
-	
+  if(getLevel2(root, key, 1, answer)) {
+		cout << answer << endl;
+	} else {
+		cout << "Key is not present\n";
+  }
 	/* Method 3 */
   cout << getLevel3(root, key, 1);
 	cout << endl;
