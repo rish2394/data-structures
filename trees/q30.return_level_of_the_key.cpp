@@ -101,16 +101,20 @@ int getLevelOfKey(tree root, int key) {
  }
 }
 
-void getLevel2(tree root, int key, int level, int &answer)  {
+bool getLevel2(tree root, int key, int level, int &answer)  {
 	if(!root) {
-		return ;
+		return false;
   }
 	if(root->data == key) {
 		answer = level;
-		return ;
-	}	
-	getLevel2(root->left, key, level+1, answer);
-	getLevel2(root->right, key, level+1, answer);
+		return true;
+	}
+	if(getLevel2(root->left, key, level+1, answer) ||
+				getLevel2(root->right, key, level+1, answer)) {
+		return true;
+	}
+
+	return false;
 }
 
 int getLevel3(tree root, int key, int level) {
