@@ -50,6 +50,7 @@ void print(vector<int> v) {
   }
 	cout << endl;
 }
+/* Method 1 */
 bool printAncestors(tree root, int key, vector<int> &v) {
 	if(!root) {
 		return false;
@@ -107,4 +108,5 @@ int main() {
 	cout << endl;	
 	return 0;  
 }
-/* Time Complexity - O(n) and Space Complexity - O(n) */
+/* Method1- Time Complexity - O(n) and Space Complexity - O(n) */
+/* Method2- Time Complexity - O(n) and Space Complexity - O(1) */
