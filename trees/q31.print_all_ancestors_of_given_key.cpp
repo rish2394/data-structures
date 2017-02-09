@@ -66,6 +66,22 @@ bool printAncestors(tree root, int key, vector<int> &v) {
 		return false;
   }
 }
+/* Method 2 without using extra space*/
+bool printAncestors2(tree root, int key) {
+  if(!root) {
+		return false;
+  }
+	if(root->data == key) {
+		return true;
+  }
+	if(printAncestors2(root->left, key) || printAncestors2(root->right, key)) {
+		cout << root->data <<' ';
+		return true;
+  }
+	else {
+		return false;
+  }
+}
 int main() {
 	tree root = NULL;
 	int data;
@@ -87,6 +103,8 @@ int main() {
 	vector<int> v;
   printAncestors(root, key, v);
 	cout << endl;	
+  printAncestors2(root, key);
+	cout << endl;	
 	return 0;  
 }
-
+/* Time Complexity - O(n) and Space Complexity - O(n) */
