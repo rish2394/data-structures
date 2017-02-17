@@ -42,3 +42,10 @@ int main() {
 	cout << "The first maximum occuring character is: " << getMaxChar(myMap) << endl;		
 	return 0;
 }
+/*
+	 Time Complexity - O(n) if we consider that look up in hash table takes O(1) on average, look up on hash table is much faster than tree
+   Time Complexity  - O(n^2) if we consider that look up takes O(n) which is the worst case
+	 
+	 If we solve this problem by map which is the implementation of the RBT which takes O(Logn) time to search n element
+	 So, in that time cmpleixty will be O(nLogn)
+*/
