@@ -13,24 +13,25 @@ typedef struct node {
 }node;
 
 typedef node *tree;
-void inorderTraversal(tree root) {
+
+void inorder(tree root) {
 	if(!root) {
-		return ;
+		return;
   }
 	stack<tree> s;
 	while(true) {
-		while(root != NULL)	{
+		while(root) {
 			s.push(root);
 			root = root->left;
-		}
-		if(s.empty())	{
+    }
+		if(s.empty()) {
 			break;
-		}
-		cout << s.top()->data << ' ';
+    }	
 		root = s.top();
 		s.pop();
+		cout << root->data <<  ' ';
 		root = root->right;
-  } 
+  }
 	cout << endl;
 }
 
@@ -53,7 +54,6 @@ void createBinaryTree(tree &root, int data) {
 		createBinaryTree(root->right, data);
   }
 }
-
 int main() {
 	tree root = NULL;
 	int data;
@@ -67,8 +67,8 @@ int main() {
 		cout << "Press y to fill more data: ";
 	  cin >> ch;
   }
-	inorderTraversal(root);
   cout << endl;
+	inorder(root);
 	return 0;  
 }
 
