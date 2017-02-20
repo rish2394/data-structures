@@ -48,47 +48,6 @@ void createBinaryTree(tree &root, char data) {
   }
 }
   	
-/* Method 1 - By storing the odd level node data in an array and reverse the array and then store it back in tree */
-void fillVectorWithOddLevelData(tree root, int level, vector<char> &v) {
-	if(!root) {
-		return;
-  } 
-	queue<tree> q;
-	q.push(root);
-	while(!q.empty()) {
-		int count  = q.size();
-		while(count) {
-	    tree temp = q.front();
-    	q.pop();
-	    if(level & 1) { 
-  	    v.push_back(temp->data);
-    	}
-    	if(temp->left) {
-      	q.push(temp->left);
-    	}
-    	if(temp->right) {
-      	q.push(temp->right);
-    	}
-			count--;
-   	}
-    level++;
-  }
-}	
-void fillTreeWithVector(tree root, int level, vector<char> v) {
-	if(!root) {
-		
-  }
-}
-void reverseAlternateLevel(tree root) {
-	vector<char> v;
-	int level = 0;
-	fillVectorWithOddLevelData(root, level, v);
-  std::reverse(v.begin(), v.end());
-/*	for(int i=0; i<v.size(); i++) {
-		cout << v[i] <<' ' ;
-  }*/
-	fillTreeWithVector(root, level, v);	
-}
 
 /* Method 3 */
 void swap(char &a, char &b) {
@@ -140,6 +99,54 @@ void reverseOddLevel(tree root) {
 	std::reverse(v.begin(), v.end());
 	fillTree(root, v, level);
 }
+
+/* Method 1 */
+void swapUtil(tree a, tree b) {
+	int temp = a->data;
+	a->data = b->data;
+  b->data = temp;
+}
+void swapLevelData(tree arr[], int n) {
+	int beg = 0;
+	int end = n-1;
+	while(beg<=end) {
+		swapUtil(arr[beg], arr[end]);
+		beg++;
+   	end--;
+  }	
+}
+void reverseAlternateLevel(tree root) {
+	if(!root) {
+		return;
+  }
+	int level = 0;
+	tree arr[100];
+	int i = 0;
+	queue<tree> q;
+	q.push(root);
+	while(!q.empty()) {
+		int count = q.size();
+		while(count--) {
+			tree temp = q.front();	
+			q.pop();
+			if(level & 1)	{	
+				arr[i++] = temp;
+				if(count == 0) {
+					swapLevelData(arr, i);
+        }
+			}
+			if(temp->left) {
+				q.push(temp->left);
+      }
+			if(temp->right) { 
+				q.push(temp->right);
+      } 
+    }
+		level++;
+		i = 0;
+  }	
+}
+
 int main() {
 	tree root = NULL;
 	char data;
@@ -159,8 +166,8 @@ int main() {
 	
 	/* Method 1 Uisng level order traversal */
 	cout << "First Reversal:";
-/*	reverseAlternateLevel(root);
-	inorderTraversal(root); */
+	reverseAlternateLevel(root);
+	inorderTraversal(root); 
 	cout << endl; 
 	
 	/*Method 2 using twice inorder traversal */
@@ -178,3 +185,6 @@ int main() {
 	return 0;  
 }
 
+// Method 1 -> Time Complexity O(n) as we are visiting each node once
+// Method 2 -> Time Complexity O(n) but two traversal and Space Complexity - O(n)
+// Method 3 -> Time Complexity O(n) and Auxillary Space - O(1)
