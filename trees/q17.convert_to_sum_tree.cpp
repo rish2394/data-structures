@@ -91,3 +91,4 @@ int main() {
 	return 0;  
 }
 
+/* Time Complexity O(n) for both method */
