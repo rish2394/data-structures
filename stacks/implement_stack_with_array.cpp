@@ -87,4 +87,4 @@ int main() {
 	display(s);
 	return 0; 	
 }
-
+/* Time Complexity-> capacity- O(1), top - O(1), size - O(1), push - O(1), pop - O(1) , full - O(1) , empty - O(1), display - O(n) */
