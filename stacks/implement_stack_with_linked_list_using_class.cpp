@@ -78,3 +78,4 @@ int main() {
   cout <<  s->size() << endl;
   return 0;
 }
+// Time Complexity - push - O(1), pop - O(1), size - O(n), empty - O(1), topData - O(1)
