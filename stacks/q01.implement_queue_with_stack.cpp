@@ -112,3 +112,6 @@ int main() {
 	 back - O(2n) ~= O(n)
    empty - O(1)
 */	 
+
+// This function wouldn't work for string due to problem in returning when the queue is empty and can be solved by using template 
+// specialization for string special
