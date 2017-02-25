@@ -5,7 +5,7 @@ using std::endl;
 #include<cstring>
 /* structure of the tree */
 typedef struct node {
-	int data;
+	char data;
 	struct node *left;
 	struct node *right;
 }node;
@@ -23,7 +23,7 @@ void inorderTraversal(tree root) {
 	inorderTraversal(root->right);
 }
 
-void createBinaryTree(tree &root, int data) {
+void createBinaryTree(tree &root, char data) {
 	tree temp = new node;
 	temp->left = NULL;
 	temp->data = data;
@@ -62,7 +62,7 @@ int minDistLeaf(tree root) {
 	minDistLeafUtil(root, level, firstLevel);
 	return firstLevel;	
 }
-int distUtil(tree root, int &min, int key) {
+int distUtil(tree root, int &min, char key) {
 	int dist = 0;
 	if(!root) {
 		return -1;
@@ -100,7 +100,7 @@ int distUtil(tree root, int &min, int key) {
   }
 	return -1;
 }
-int closestLeafDist(tree root, int key) {
+int closestLeafDist(tree root, char key) {
 	int min = INT_MAX;
 	distUtil(root, min, key);	
 	return min;
@@ -108,7 +108,7 @@ int closestLeafDist(tree root, int key) {
 
 int main() {
 	tree root = NULL;
-	int data;
+	char data;
 	char ch;
 	cout << "Press y to fill data: ";
 	cin >> ch;
@@ -121,10 +121,10 @@ int main() {
   }
 	inorderTraversal(root);
   cout << endl;
-	int key;
+	char key;
 	cout << "Enter key:";
 	cin >> key;
-  cout << closestLeafDist(root, key) << endl;
+  cout << "The closest distance leaf is " << closestLeafDist(root, key) << endl;
 	return 0;  
 }
 
