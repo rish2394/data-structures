@@ -109,10 +109,8 @@ void swapUtil(tree a, tree b) {
 void swapLevelData(tree arr[], int n) {
 	int beg = 0;
 	int end = n-1;
-	while(beg<=end) {
-		swapUtil(arr[beg], arr[end]);
-		beg++;
-   	end--;
+	while(beg<end) {
+		swapUtil(arr[beg++], arr[end--]);
   }	
 }
 void reverseAlternateLevel(tree root) {
@@ -185,6 +183,6 @@ int main() {
 	return 0;  
 }
 
-// Method 1 -> Time Complexity O(n) as we are visiting each node once
+// Method 1 -> Time Complexity O(n) as we are visiting each node once and Space Complexity - O(n)
 // Method 2 -> Time Complexity O(n) but two traversal and Space Complexity - O(n)
 // Method 3 -> Time Complexity O(n) and Auxillary Space - O(1)
