@@ -4,8 +4,8 @@ using std::cin;
 using std::endl;
 
 typedef struct node {
-	int n; // number of vertices 
-	int m; // number of edges;
+	int n; // number of vertices
+	int m; // number of edges
 	int **arr;
 }node;
 typedef node* graph;
