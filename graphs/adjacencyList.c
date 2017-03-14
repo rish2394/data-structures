@@ -87,5 +87,5 @@ int main() {
 /* Time Complexity: 
 	initialiseGraph takes O(1)
 	addEdge takes O(1) to add an edge
-	printGraph takes O(V*E)
+	printGraph takes O(V+E)
 */
